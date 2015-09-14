@@ -1,4 +1,4 @@
-# sinatra-ffmpeg
+# sinatra-encoder
 
 ----
 

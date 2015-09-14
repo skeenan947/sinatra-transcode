@@ -1,8 +1,47 @@
 <div>
-  <h4>動画をアップロードしてね!</h4>
-  <form action="/upload" method="post" enctype="multipart/form-data">
+  <h4>Media Encoder</h4>
+  <form action="/encode" method="post" enctype="multipart/form-data">
     <p><input type="file" name="media"></p>
-    <p><input type="submit" value="送信する"></p>
+    <p>Size:
+      <select name="size">
+        <option>Pick One...</option>
+        <option value="720x480">480p</option>
+        <option value="1280x720">720p</option>
+        <option value="1920x1080">1080p</option>
+        <option value="704x480">NTSC (704x480)</option>
+        <option value="704x576">PAL (704x576)</option>
+        <option value="166x120">QSIF (166x120)</option>
+        <option value="320x240">SIF (320x240)</option>
+        <option value="176x144">QCIF (176x144)</option>
+        <option value="352×288">CIF (352×288)</option>
+      </select>
+    </p>
+    <p>Container:
+      <select name="container">
+        <option value="mp4">MPEG4/QuickTime</option>
+        <option value="avi">AVI</option>
+        <option value="flv">Flash</option>
+      </select>
+    </p>
+    <p>Video Codec: 
+      <select name="vcodec">
+        <option value="libx264">x264</option>
+        <option value="flv">Flash Video</option>
+        <option value="h264">H.264</option>
+      </select>
+    </p>
+    <p>Video Bitrate (kbps): <input type="text" name="vbitrate" value="512"></p>
+    <p>Audio Codec: 
+      <select name="acodec">
+        <option value="aac">AAC</option>
+        <option value="mp3">MP3</option>
+        <option value="ac3">AC3</option>
+        <option value="vorbis">Ogg.Vorbis</option>
+        <option value="wmapro">WMA Pro</option>
+      </select>
+    </p>
+    <p>Audio Bitrate (kbps): <input type="text" name="abitrate" value="128"></p>
+    <p><input type="submit" value="Submit"></p>
   </form>
 </div>
 
