@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require 'sinatra/assetpack'
 require 'sinatra/json'
 require 'streamio-ffmpeg'
 
