@@ -3,6 +3,8 @@ require 'sinatra/reloader'
 require 'sinatra/json'
 require 'streamio-ffmpeg'
 
+set :bind, '0.0.0.0'
+
 get "/media/:file" do 
   file = "media/#{params[:file]}"
   if File.exists?(file)
@@ -35,6 +37,7 @@ post '/encode' do
   @filename = params[:media][:filename]
   file = params[:media][:tempfile]
 
+  FFMPEG.ffmpeg_binary = '/usr/bin/avconv'
   media = FFMPEG::Movie.new(file.path)
   
   options = {video_codec: params[:vcodec], frame_rate: 29.97, resolution: params[:size], video_bitrate: params[:Vbitrate],
@@ -42,7 +45,7 @@ post '/encode' do
              threads: 6,
              custom: "-strict experimental -ac 1"}
   
-  outpath=File.dirname(file.path)
+  outpath="media"
   outfile = "#{File.basename(params[:media][:filename],File.extname(params[:media][:filename]))}.#{params[:container]}"
   out="#{outpath}/#{outfile}"
   outtmp="#{outpath}/1-#{outfile}"
